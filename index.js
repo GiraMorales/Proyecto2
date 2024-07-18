@@ -163,7 +163,7 @@ const filtrar = () => {
 const showSuggestions = () => {
   const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
   const container = document.getElementById('zapatillas');
-  container.innerHTML = '<h3>Sugerencias:</h3>'; // Encabezado para las sugerencias
+  (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(filtered); // Encabezado para las sugerencias
   renderProducts(suggestions);
 };
 
