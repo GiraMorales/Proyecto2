@@ -97,6 +97,9 @@ header nav a {
   width: 7em;
   align-items: center;
 }
+#sectionfiltros {
+  visibility: hidden;
+}
 
 /* body */
 .flex-container {

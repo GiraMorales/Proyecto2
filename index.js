@@ -153,31 +153,38 @@ let PRECIO = '';
 const filtrar = () => {
   const filtered = zapatillas.filter((zapa) => {
     const modeloMatch = MODELO ? zapa.modelo === MODELO : true;
-    const precioMatch = PRECIO ? zapa.precio === PRECIO : true;
+    const precioMatch = PRECIO ? zapa.precio <= PRECIO : true; // Permitir precios menores o iguales
     return modeloMatch && precioMatch;
   });
 
   printZapas(filtered);
 };
 
+const showSuggestions = () => {
+  const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
+  const container = document.getElementById('zapatillas');
+  container.innerHTML = '<h3>Sugerencias:</h3>'; // Encabezado para las sugerencias
+  renderProducts(suggestions);
+};
+
+// Función para llenar modelos únicos en un array
 const fillModelos = (zapas) => {
-  // limpiar y ponerlo a cero
-  MODELOS.splice(0);
+  MODELOS.splice(0); // Vacía el array MODELOS
   for (const zapa of zapas) {
     if (!MODELOS.includes(zapa.modelo)) {
-      MODELOS.push(zapa.modelo);
+      MODELOS.push(zapa.modelo); // Añade modelos únicos al array MODELOS
     }
   }
 };
 
 fillModelos(zapatillas);
 
+// Función para llenar precios únicos en un array
 const fillPrecios = (moneys) => {
-  // limpiar y ponerlo a cero
-  PRECIOS.splice(0);
+  PRECIOS.splice(0); // Vacía el array MODELOS
   for (const money of moneys) {
     if (!PRECIOS.includes(money.precio)) {
-      PRECIOS.push(money.precio);
+      PRECIOS.push(money.precio); // Añade modelos únicos al array PRECIOS
     }
   }
 };
@@ -188,24 +195,26 @@ const createSelectModel = () => {
   const divFiltros = document.querySelector('#modelos');
   const selectModel = document.createElement('select');
 
+  // Crea la opción por defecto "Todos los modelos"
   const defaultOption = document.createElement('option');
   defaultOption.value = '';
   defaultOption.textContent = 'Todos los modelos';
   selectModel.appendChild(defaultOption);
 
+  // Añade opciones para cada modelo único en MODELOS
   for (const modelo of MODELOS) {
     const option = document.createElement('option');
 
     option.value = modelo;
     option.textContent = modelo;
-
     selectModel.appendChild(option);
   }
 
+  // Agrega el select al DOM y añade un event listener para cambios
   divFiltros.appendChild(selectModel);
   selectModel.addEventListener('change', (event) => {
-    MODELO = event.target.value;
-    filtrar();
+    MODELO = event.target.value; // Actualiza MODELO con el modelo seleccionado
+    filtrar(); // Filtra las zapatillas según el modelo seleccionado
   });
 };
 
@@ -213,11 +222,13 @@ const createSelectPrecio = () => {
   const divPrecio = document.querySelector('#precio');
   const selectPrecio = document.createElement('select');
 
+  // Crea la opción por defecto "Todos los precios"
   const defaultOption = document.createElement('option');
   defaultOption.value = '';
   defaultOption.textContent = 'Todos los precios';
   selectPrecio.appendChild(defaultOption);
 
+  // Añade opciones para cada precio único en PRECIOS
   for (const precio of PRECIOS) {
     const option = document.createElement('option');
 
@@ -227,10 +238,11 @@ const createSelectPrecio = () => {
     selectPrecio.appendChild(option);
   }
 
+  // Agrega el select al DOM y añade un event listener para cambios
   divPrecio.appendChild(selectPrecio);
   selectPrecio.addEventListener('change', (event) => {
-    PRECIO = event.target.value;
-    filtrar();
+    PRECIO = event.target.value; // Actualiza PRECIO con el precio seleccionado
+    filtrar(); // Filtra las zapatillas según el precio seleccionado
   });
 };
 
@@ -239,21 +251,26 @@ const createResetButton = () => {
   const resetButton = document.createElement('button');
   resetButton.textContent = 'Borrar Filtros';
 
+  // Agrega un event listener al botón para borrar filtros
   resetButton.addEventListener('click', () => {
-    MODELO = '';
-    PRECIO = '';
-    document.querySelector('#modelos select').value = '';
-    document.querySelector('#precio select').value = '';
-    printZapas(zapatillas);
+    MODELO = ''; // Resetea MODELO
+    PRECIO = ''; // Resetea PRECIO
+    document.querySelector('#modelos select').value = ''; // Resetea el select de modelos
+    document.querySelector('#precio select').value = ''; // Resetea el select de precios
+    printZapas(zapatillas); // Muestra todas las zapatillas de nuevo
   });
+
+  // Agrega el botón al DOM
   divFiltros.appendChild(resetButton);
 };
 
 const printZapas = (zapas) => {
   const divZapas = document.querySelector('#zapatillas');
-  divZapas.innerHTML = '';
+  divZapas.innerHTML = ''; // Vacía el contenedor de zapatillas
 
+  // Itera sobre cada zapatilla y crea elementos HTML para mostrarlas
   for (const zapa of zapas) {
+    // Crea elementos para cada propiedad de la zapatilla
     const divZapa = document.createElement('div');
     const divImg = document.createElement('div');
     const img = document.createElement('img');
@@ -262,6 +279,7 @@ const printZapas = (zapas) => {
     const boton = document.createElement('button');
     const divEstrellas = document.createElement('div');
 
+    // Crea estrellas de calificación para cada zapatilla
     for (let i = 1; i <= 5; i++) {
       const estrella = document.createElement('div');
       estrella.className = 'estrella';
@@ -271,6 +289,7 @@ const printZapas = (zapas) => {
       divEstrellas.appendChild(estrella);
     }
 
+    // Añade clases y contenido a los elementos
     divZapa.className = 'flex-container';
     divImg.classList.add('imgContainer');
     divEstrellas.classList.add('estrellas');
@@ -278,11 +297,13 @@ const printZapas = (zapas) => {
     nombre.classList.add('f2');
     boton.classList.add('f3');
 
+    // Agrega evento al botón para resaltar al hacer clic
     boton.addEventListener('click', () => {
       boton.style.backgroundColor = 'yellow';
       boton.style.transition = '.5s ease';
     });
 
+    // Asigna valores y contenido a los elementos
     img.src = zapa.img;
     nombre.textContent = zapa.nombre;
     precio.textContent = zapa.precio;
@@ -291,6 +312,7 @@ const printZapas = (zapas) => {
       Math.floor(Math.random() * 8) + 1
     })`;
 
+    // Construye la estructura de la zapatilla y la agrega al contenedor principal
     divZapa.appendChild(divImg);
     divImg.appendChild(img);
     divZapa.appendChild(nombre);
@@ -298,16 +320,15 @@ const printZapas = (zapas) => {
     divZapa.appendChild(divEstrellas);
     divZapa.appendChild(boton);
     divZapas.appendChild(divZapa);
-    divZapas.appendChild(sectionfiltros);
   }
 };
 
 function ShowHide() {
   var container = document.getElementById('sectionfiltros');
-  if (container.style.display === 'hidden') {
-    container.style.display = 'visible';
-  } else {
-    container.style.display = 'hidden';
+  if (container.style.visibility == 'hidden') {
+    container.style.visibility = 'visible';
+  } else if ((container.style.visibility = 'visible')) {
+    container.style.visibility = 'hidden';
   }
 }
 
