@@ -41,7 +41,7 @@ a {
   --tdf-card: var(--tdf-color-4);
 
   /*BORDER RADIUS*/
-  --tdf-boder-radius: 10px;
+  --tdf-border-radius: 10px;
 
   /* FONTSIZE */
   --tdf-fontsize-xs: 5px;
@@ -81,8 +81,7 @@ header {
 }
 
 header .logo {
-  width: 10%;
-  height: 10%;
+  width: 9em;
 }
 
 header nav {
@@ -95,7 +94,7 @@ header nav {
 header nav a {
   display: flex;
   padding: var(--tdf-padding-m);
-  width: 15%;
+  width: 7em;
   align-items: center;
 }
 
@@ -185,6 +184,7 @@ select {
 button {
   font-size: large;
   border-radius: 30px;
+  margin-top: var(--tdf-margin-xs);
   padding: var(--tdf-padding-s);
   background: var(--tdf-color-4);
 }
@@ -229,7 +229,6 @@ h4 {
 }
 
 @media screen and (max-width: 440px) {
-  /* no escrito nada porque no me funciona tampoco */
   .encabezado {
     margin: 0 var(--tdf-margin-s);
     gap: var(--tdf-gap-m);
@@ -245,6 +244,7 @@ h4 {
 
   header nav a {
     padding: var(--tdf-padding-xs);
+    width: 15%;
   }
 
   /* body */

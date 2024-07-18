@@ -298,15 +298,16 @@ const printZapas = (zapas) => {
     divZapa.appendChild(divEstrellas);
     divZapa.appendChild(boton);
     divZapas.appendChild(divZapa);
+    divZapas.appendChild(sectionfiltros);
   }
 };
 
 function ShowHide() {
-  var container = document.getElementsByClassName('sectionfiltros')[0];
-  if (container.style.visibility == 'hidden') {
-    container.style.visibility = 'visible';
+  var container = document.getElementById('sectionfiltros');
+  if (container.style.display === 'hidden') {
+    container.style.display = 'visible';
   } else {
-    container.style.visibility == 'hidden';
+    container.style.display = 'hidden';
   }
 }
 
@@ -321,31 +322,28 @@ header.innerHTML = `<section class="encabezado">
       <div class="logo">
         <img
           src="https://res.cloudinary.com/dvoady6dt/image/upload/v1718815465/Proyecto2/dds3jqpek493orkavmci.svg"
-          width="60%"
-          height="60%"
+          width="100%"
           alt="logo"
         />
       </div>
       <nav>
-        <a href="./Filtros.html"
+        <a href="#"
           ><img
             src="https://res.cloudinary.com/dvoady6dt/image/upload/v1720683803/Proyecto2/iconos/qdfr8p7dszakshlb9y3a.png"
-            width="60%"
-            height="60%" onclick="ShowHide()"
+            width="100%"
+          onclick="ShowHide()"
             alt="Ajustes"
         /></a>
         <a href="#"
           ><img
             src="https://res.cloudinary.com/dvoady6dt/image/upload/v1718818082/Proyecto2/iconos/esd1cebmywgri1ztrini.png"
-            width="60%"
-            height="60%"
+            width="100%"
             alt="comprar"
         /></a>
         <a href="#"
           ><img
             src="https://res.cloudinary.com/dvoady6dt/image/upload/v1718818082/Proyecto2/iconos/n38lmuxojsjp5vvvj4sk.png"
-            width="60%"
-            height="60%"
+            width="100%"
             alt="login"
         /></a>
       </nav>
