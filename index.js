@@ -4,7 +4,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_1.png',
     modelo: 'Adidas',
     nombre: 'Adidas Runfalcon 3',
-    precio: '70.00 €',
+    precio: 70.0,
     estrellas: 5,
     boton: 'comprar'
   },
@@ -13,7 +13,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_2.png',
     modelo: 'New Balance',
     nombre: 'New Balance 550',
-    precio: '80.00 €',
+    precio: 80.0,
     estrellas: 1,
     boton: 'comprar'
   },
@@ -22,7 +22,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_3.png',
     modelo: 'Nike',
     nombre: 'Nike Air Force 1 Low',
-    precio: '90.00 €',
+    precio: 90.0,
     estrellas: 4,
     boton: 'comprar'
   },
@@ -31,7 +31,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_4.png',
     modelo: 'Nike',
     nombre: 'Nike Mercurial Vapor 15 Club',
-    precio: '110.00 €',
+    precio: 110.0,
     estrellas: 1,
     boton: 'comprar'
   },
@@ -40,7 +40,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193985/Proyecto2/Zapatilla_5.png',
     modelo: 'Altra',
     nombre: 'Altra Lone Peak 8',
-    precio: '120.00 €',
+    precio: 120.0,
     estrellas: 3,
     boton: 'comprar'
   },
@@ -49,7 +49,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193985/Proyecto2/Zapatilla_6.png',
     modelo: 'Adidas',
     nombre: 'Adidas Originals Gazelle',
-    precio: '100.00 €',
+    precio: 100.0,
     estrellas: 2,
     boton: 'comprar'
   },
@@ -58,7 +58,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_7.png',
     modelo: 'Vans',
     nombre: 'Vans F UA Comfy Era',
-    precio: '60.00 €',
+    precio: 60.0,
     estrellas: 4,
     boton: 'comprar'
   },
@@ -67,7 +67,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193983/Proyecto2/Zapatilla_8.png',
     modelo: 'Adidas',
     nombre: 'Adidas Fabela Zone',
-    precio: '70.00 €',
+    precio: 70.0,
     estrellas: 3,
     boton: 'comprar'
   },
@@ -76,7 +76,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193983/Proyecto2/Zapatilla_9.png',
     modelo: 'Nike',
     nombre: 'Nike Air Max Furyosa',
-    precio: '100.00 €',
+    precio: 100.0,
     estrellas: 2,
     boton: 'comprar'
   },
@@ -85,7 +85,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_10.png',
     modelo: 'Mizuno',
     nombre: 'Mizuno Contender',
-    precio: '120.00 €',
+    precio: 120.0,
     estrellas: 5,
     boton: 'comprar'
   },
@@ -94,7 +94,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_11.png',
     modelo: 'Nike',
     nombre: 'Nike Air More Uptempo',
-    precio: '90.00 €',
+    precio: 90.0,
     estrellas: 4,
     boton: 'comprar'
   },
@@ -103,7 +103,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_12.png',
     modelo: 'Fila',
     nombre: 'Fila Flash Attack',
-    precio: '80.00 €',
+    precio: 80.0,
     estrellas: 1,
     boton: 'comprar'
   },
@@ -112,7 +112,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193983/Proyecto2/Zapatilla_13.png',
     modelo: 'Adidas',
     nombre: 'Adidas Originals Gazelle',
-    precio: '110.00 €',
+    precio: 110.0,
     estrellas: 3,
     boton: 'comprar'
   },
@@ -121,7 +121,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_14.png',
     modelo: 'Adidas',
     nombre: 'Adidas Forum Low White',
-    precio: '90.00 €',
+    precio: 90.0,
     estrellas: 2,
     boton: 'comprar'
   },
@@ -130,7 +130,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_15.png',
     modelo: 'New Balance',
     nombre: 'New Balance 327',
-    precio: '100.00 €',
+    precio: 100.0,
     estrellas: 5,
     boton: 'comprar'
   },
@@ -139,7 +139,7 @@ const zapatillas = [
     img: 'https://res.cloudinary.com/dvoady6dt/image/upload/v1720193984/Proyecto2/Zapatilla_16.png',
     modelo: 'Adidas',
     nombre: 'Adidas Gazelle Pink',
-    precio: '120.00 €',
+    precio: 120.0,
     estrellas: 1,
     boton: 'comprar'
   }
@@ -154,7 +154,8 @@ const filtrar = () => {
   const filtered = zapatillas.filter((zapa) => {
     const modeloMatch = MODELO ? zapa.modelo === MODELO : true;
     const precioMatch = PRECIO ? zapa.precio <= PRECIO : true; // Permitir precios menores o iguales
-    return modeloMatch && precioMatch;
+    const suggestions = zapatillas.slice(0, 3);
+    return modeloMatch && precioMatch && suggestions;
   });
 
   printZapas(filtered);
@@ -164,6 +165,7 @@ const showSuggestions = () => {
   const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
   const container = document.getElementById('zapatillas');
   (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(filtered); // Encabezado para las sugerencias
+
   renderProducts(suggestions);
 };
 
@@ -306,7 +308,7 @@ const printZapas = (zapas) => {
     // Asigna valores y contenido a los elementos
     img.src = zapa.img;
     nombre.textContent = zapa.nombre;
-    precio.textContent = zapa.precio;
+    precio.textContent = `${zapa.precio} €`;
     boton.textContent = zapa.boton;
     divImg.style.background = `var(--tdf-special-color-${
       Math.floor(Math.random() * 8) + 1
@@ -336,6 +338,7 @@ printZapas(zapatillas);
 createSelectModel();
 createSelectPrecio();
 createResetButton();
+ShowHide();
 
 // header
 const header = document.querySelector('header');
