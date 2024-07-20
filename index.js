@@ -161,14 +161,6 @@ const filtrar = () => {
   printZapas(filtered);
 };
 
-const showSuggestions = () => {
-  const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
-  const container = document.getElementById('zapatillas');
-  (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(filtered); // Encabezado para las sugerencias
-
-  renderProducts(suggestions);
-};
-
 // Función para llenar modelos únicos en un array
 const fillModelos = (zapas) => {
   MODELOS.splice(0); // Vacía el array MODELOS
@@ -264,6 +256,23 @@ const createResetButton = () => {
 
   // Agrega el botón al DOM
   divFiltros.appendChild(resetButton);
+};
+
+const showSuggestions = () => {
+  const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
+  const container = document.getElementById('zapatillas');
+  (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(filtered); // Encabezado para las sugerencias
+
+  renderProducts(suggestions);
+};
+
+const resultdos = () => {
+  if (createSelectModel === ' ') {
+  } else if (createSelectPrecio === ' ') {
+  } else {
+    (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(filtered);
+  }
+  resultdos();
 };
 
 const printZapas = (zapas) => {
