@@ -144,6 +144,7 @@ const zapatillas = [
     boton: 'comprar'
   }
 ];
+// Variables para guardar los criterios seleccionados por el usuario
 const MODELOS = [];
 const PRECIOS = [];
 
@@ -156,19 +157,7 @@ const filtrar = () => {
     const precioMatch = PRECIO ? zapa.precio <= PRECIO : true; // Permitir precios menores o iguales
     return modeloMatch && precioMatch;
   });
-
   printZapas(filtered);
-};
-
-const showSuggestions = () => {
-  const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
-  const container = document.getElementById('zapatillas');
-  container.innerHTML = '<h3>Sugerencias:</h3>';
-  // if (container.style.visibility == 'visible') {
-  //   container.style.visibility = 'hidden';
-  // } else if ((container.style.visibility = 'visible')) {
-  //   container.style.visibility = 'hidden';
-  // }
 };
 
 // Función para llenar modelos únicos en un array
@@ -181,8 +170,6 @@ const fillModelos = (zapas) => {
   }
 };
 
-fillModelos(zapatillas);
-
 // Función para llenar precios únicos en un array
 const fillPrecios = (moneys) => {
   PRECIOS.splice(0); // Vacía el array MODELOS
@@ -193,6 +180,18 @@ const fillPrecios = (moneys) => {
   }
 };
 
+const productosFiltrados = () => {
+  productosFiltrados.length;
+  if (productosFiltrados.length === 0) {
+    // Recorrer array y si es igual a cero
+    const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
+    container.innerHTML = '<h3>Sugerencias:</h3>';
+    const container = document.getElementById('zapatillas');
+  }
+  suggestions();
+};
+
+fillModelos(zapatillas);
 fillPrecios(zapatillas);
 
 const createSelectModel = () => {
@@ -341,7 +340,6 @@ createSelectModel();
 createSelectPrecio();
 createResetButton();
 ShowHide();
-showSuggestions();
 
 // header
 const header = document.querySelector('header');
