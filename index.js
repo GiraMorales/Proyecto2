@@ -180,17 +180,19 @@ const fillPrecios = (moneys) => {
   }
 };
 
-const productosFiltrados = () => {
-  productosFiltrados.length;
-  if (productosFiltrados.length === 0) {
-    // Recorrer array y si es igual a cero
-    const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
-    container.innerHTML = '<h3>Sugerencias:</h3>';
-    const container = document.getElementById('zapatillas');
-  }
-  suggestions();
+const productosFiltrados = (zapatillas) => {
+  for (let i = 0; i < productosFiltrados.length; i++)
+    if (productosFiltrados.length <= 0) {
+      // Recorrer array y si es igual a cero
+      return 'esto me gusta';
+      // const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
+      // container.innerHTML = '<h3>Sugerencias:</h3>';
+      // const container = document.getElementById('zapatillas');
+    } else {
+      return 'esto no me gusta';
+    }
 };
-
+// suggestions();
 fillModelos(zapatillas);
 fillPrecios(zapatillas);
 
@@ -334,12 +336,11 @@ function ShowHide() {
     container.style.visibility = 'hidden';
   }
 }
-
+ShowHide();
 printZapas(zapatillas);
 createSelectModel();
 createSelectPrecio();
 createResetButton();
-ShowHide();
 
 // header
 const header = document.querySelector('header');
