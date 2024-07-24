@@ -147,6 +147,7 @@ const zapatillas = [
 // Variables para guardar los criterios seleccionados por el usuario
 const MODELOS = [];
 const PRECIOS = [];
+const suggestions = [];
 
 let MODELO = '';
 let PRECIO = '';
@@ -181,20 +182,16 @@ const fillPrecios = (moneys) => {
   }
 };
 
-const productosFiltrados = (zapatillas) => {
-  for (const i = 0; i < zapatillas.length; i++)
-    if (PRODUCTOSFILTRADOS.length <= 0) {
-      // Recorrer array y si es igual a cero
-      return 'esto me gusta';
-      // const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
-      // container.innerHTML = '<h3>Sugerencias:</h3>';
-      // const container = document.getElementById('zapatillas');
-    } else {
-      return 'esto no me gusta';
-      PRODUCTOSFILTRADOS = '';
-    }
-};
-// suggestions();
+const productosFiltrados = { fillModelos, fillPrecios };
+console.log('productosFiltrados');
+if (productosFiltrados.length <= 0) {
+  const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
+  container.innerHTML = '<h3>Sugerencias:</h3>';
+  const container = document.getElementById('zapatillas');
+} else {
+  PRODUCTOSFILTRADOS = '';
+}
+
 fillModelos(zapatillas);
 fillPrecios(zapatillas);
 
