@@ -150,6 +150,7 @@ const PRECIOS = [];
 
 let MODELO = '';
 let PRECIO = '';
+let PRODUCTOSFILTRADOS = '';
 
 const filtrar = () => {
   const filtered = zapatillas.filter((zapa) => {
@@ -181,8 +182,8 @@ const fillPrecios = (moneys) => {
 };
 
 const productosFiltrados = (zapatillas) => {
-  for (let i = 0; i < productosFiltrados.length; i++)
-    if (productosFiltrados.length <= 0) {
+  for (const i = 0; i < zapatillas.length; i++)
+    if (PRODUCTOSFILTRADOS.length <= 0) {
       // Recorrer array y si es igual a cero
       return 'esto me gusta';
       // const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
@@ -190,6 +191,7 @@ const productosFiltrados = (zapatillas) => {
       // const container = document.getElementById('zapatillas');
     } else {
       return 'esto no me gusta';
+      PRODUCTOSFILTRADOS = '';
     }
 };
 // suggestions();
