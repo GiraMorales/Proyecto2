@@ -147,11 +147,10 @@ const zapatillas = [
 // Variables para guardar los criterios seleccionados por el usuario
 const MODELOS = [];
 const PRECIOS = [];
-const suggestions = [];
 
 let MODELO = '';
 let PRECIO = '';
-let PRODUCTOSFILTRADOS = '';
+let PRODUCTOSFILTRADOS = [];
 
 const filtrar = () => {
   const filtered = zapatillas.filter((zapa) => {
@@ -182,15 +181,25 @@ const fillPrecios = (moneys) => {
   }
 };
 
-const productosFiltrados = { fillModelos, fillPrecios };
-console.log('productosFiltrados');
-if (productosFiltrados.length <= 0) {
-  const suggestions = zapatillas.slice(0, 3); // Tomar los primeros 3 productos como sugerencias
-  container.innerHTML = '<h3>Sugerencias:</h3>';
+// Obtener sugerencias aleatorias
+const productosfiltrados = (count) => {
+  const shuffled = [...zapatillas].sort(() => 0.5 - Math.random()); // Barajar el array
+  return shuffled.slice(0, count);
+};
+
+const showSuggestions = () => {
+  const suggestions = productosfiltrados(3);
   const container = document.getElementById('zapatillas');
-} else {
-  PRODUCTOSFILTRADOS = '';
-}
+  (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(); // Encabezado para las sugerencias
+  renderProducts(suggestions);
+};
+
+const checkelements = () => {
+  const container = document.getElementById('zapatillas');
+  if (container.innerHTML.trim() === '') {
+    container.innerHTML = showSuggestions();
+  }
+};
 
 fillModelos(zapatillas);
 fillPrecios(zapatillas);
@@ -268,6 +277,15 @@ const createResetButton = () => {
   divFiltros.appendChild(resetButton);
 };
 
+function ShowHide() {
+  const container = document.getElementById('sectionfiltros');
+  if (container.style.visibility == 'hidden') {
+    container.style.visibility = 'visible';
+  } else if ((container.style.visibility = 'visible')) {
+    container.style.visibility = 'hidden';
+  }
+}
+
 const printZapas = (zapas) => {
   const divZapas = document.querySelector('#zapatillas');
   divZapas.innerHTML = ''; // Vacía el contenedor de zapatillas
@@ -327,19 +345,14 @@ const printZapas = (zapas) => {
   }
 };
 
-function ShowHide() {
-  var container = document.getElementById('sectionfiltros');
-  if (container.style.visibility == 'hidden') {
-    container.style.visibility = 'visible';
-  } else if ((container.style.visibility = 'visible')) {
-    container.style.visibility = 'hidden';
-  }
-}
-ShowHide();
-printZapas(zapatillas);
-createSelectModel();
-createSelectPrecio();
-createResetButton();
+// Inicializa los filtros y muestra sugerencias al cargar la página
+window.onload = () => {
+  ShowHide();
+  printZapas(zapatillas);
+  createSelectModel();
+  createSelectPrecio();
+  createResetButton();
+};
 
 // header
 const header = document.querySelector('header');
