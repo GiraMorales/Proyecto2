@@ -147,10 +147,10 @@ const zapatillas = [
 // Variables para guardar los criterios seleccionados por el usuario
 const MODELOS = [];
 const PRECIOS = [];
+const PRODUCTOSFILTRADOS = [];
 
 let MODELO = '';
 let PRECIO = '';
-let PRODUCTOSFILTRADOS = [];
 
 const filtrar = () => {
   const filtered = zapatillas.filter((zapa) => {
@@ -181,28 +181,14 @@ const fillPrecios = (moneys) => {
   }
 };
 
-// Obtener sugerencias aleatorias
-const productosfiltrados = (count) => {
-  const shuffled = [...zapatillas].sort(() => 0.5 - Math.random()); // Barajar el array
-  return shuffled.slice(0, count);
-};
-
-const showSuggestions = () => {
-  const suggestions = productosfiltrados(3);
-  const container = document.getElementById('zapatillas');
-  (container.innerHTML = '<h3>Sugerencias:</h3>'), printZapas(); // Encabezado para las sugerencias
-  renderProducts(suggestions);
-};
-
-const checkelements = () => {
-  const container = document.getElementById('zapatillas');
-  if (container.innerHTML.trim() === '') {
-    container.innerHTML = showSuggestions();
-  }
-};
-
 fillModelos(zapatillas);
 fillPrecios(zapatillas);
+
+const productosfiltrados = () => {
+  const shuffled = [zapatillas].sort(() => 0.5 - Math.random()); // Barajar el array
+  return shuffled.slice(0);
+};
+productosfiltrados();
 
 const createSelectModel = () => {
   const divFiltros = document.querySelector('#modelos');
@@ -277,6 +263,125 @@ const createResetButton = () => {
   divFiltros.appendChild(resetButton);
 };
 
+const printZapas = (zapas) => {
+  const divZapas = document.querySelector('#zapatillas');
+  divZapas.innerHTML = ''; // Vacía el contenedor de zapatillas
+
+  if (zapas <= 0) {
+    divZapas.innerHTML =
+      '<h3>No hemos encontrado lo que buscaba pero os sugerimos estas otras que podrian ser de su agrado:<h3>';
+    // Obtener sugerencias aleatorias
+    const sugerencias = productosfiltrados();
+    // printZapas(sugerencias);
+  } else {
+    for (const zapa of zapas) {
+      // Crea elementos para cada propiedad de la zapatilla
+      const divZapa = document.createElement('div');
+      const divImg = document.createElement('div');
+      const img = document.createElement('img');
+      const nombre = document.createElement('h3');
+      const precio = document.createElement('p');
+      const boton = document.createElement('button');
+      const divEstrellas = document.createElement('div');
+
+      // Crea estrellas de calificación para cada zapatilla
+      for (let i = 1; i <= 5; i++) {
+        const estrella = document.createElement('div');
+        estrella.className = 'estrella';
+        if (zapa.estrellas >= i) {
+          estrella.classList.add('rellena');
+        }
+        divEstrellas.appendChild(estrella);
+      }
+
+      // Añade clases y contenido a los elementos
+      divZapa.className = 'flex-container';
+      divImg.classList.add('imgContainer');
+      divEstrellas.classList.add('estrellas');
+      divEstrellas.classList.add('flex-container');
+      nombre.classList.add('f2');
+      boton.classList.add('f3');
+
+      // Agrega evento al botón para resaltar al hacer clic
+      boton.addEventListener('click', () => {
+        boton.style.backgroundColor = 'yellow';
+        boton.style.transition = '.5s ease';
+      });
+
+      // Asigna valores y contenido a los elementos
+      img.src = zapa.img;
+      nombre.textContent = zapa.nombre;
+      precio.textContent = `${zapa.precio} €`;
+      boton.textContent = zapa.boton;
+      divImg.style.background = `var(--tdf-special-color-${
+        Math.floor(Math.random() * 8) + 1
+      })`;
+
+      // Construye la estructura de la zapatilla y la agrega al contenedor principal
+      divZapa.appendChild(divImg);
+      divImg.appendChild(img);
+      divZapa.appendChild(nombre);
+      divZapa.appendChild(precio);
+      divZapa.appendChild(divEstrellas);
+      divZapa.appendChild(boton);
+      divZapas.appendChild(divZapa);
+    }
+  }
+
+  // Itera sobre cada zapatilla y crea elementos HTML para mostrarlas
+  for (const zapa of zapas) {
+    // Crea elementos para cada propiedad de la zapatilla
+
+    const bambas = (zapa) => {
+      const divZapa = document.createElement('div');
+      const divImg = document.createElement('div');
+      const img = document.createElement('img');
+      const nombre = document.createElement('h3');
+      const precio = document.createElement('p');
+      const boton = document.createElement('button');
+      const divEstrellas = document.createElement('div');
+
+      // Crea estrellas de calificación para cada zapatilla
+      for (let i = 1; i <= 5; i++) {
+        const estrella = document.createElement('div');
+        estrella.className = 'estrella';
+        if (zapa.estrellas >= i) {
+          estrella.classList.add('rellena');
+        }
+        divEstrellas.appendChild(estrella);
+      }
+      divZapa.className = 'flex-container';
+      divImg.classList.add('imgContainer');
+      divEstrellas.classList.add('estrellas');
+      divEstrellas.classList.add('flex-container');
+      nombre.classList.add('f2');
+      boton.classList.add('f3');
+
+      // Agrega evento al botón para resaltar al hacer clic
+      boton.addEventListener('click', () => {
+        boton.style.backgroundColor = 'yellow';
+        boton.style.transition = '.5s ease';
+      });
+
+      // Asigna valores y contenido a los elementos
+      img.src = zapa.img;
+      nombre.textContent = zapa.nombre;
+      precio.textContent = `${zapa.precio} €`;
+      boton.textContent = zapa.boton;
+      divImg.style.background = `var(--tdf-special-color-${
+        Math.floor(Math.random() * 8) + 1
+      })`;
+      divZapa.appendChild(divImg);
+      divImg.appendChild(img);
+      divZapa.appendChild(nombre);
+      divZapa.appendChild(precio);
+      divZapa.appendChild(divEstrellas);
+      divZapa.appendChild(boton);
+      divZapas.appendChild(divZapa);
+    };
+  }
+};
+
 function ShowHide() {
   const container = document.getElementById('sectionfiltros');
   if (container.style.visibility == 'hidden') {
@@ -285,66 +390,6 @@ function ShowHide() {
     container.style.visibility = 'hidden';
   }
 }
-
-const printZapas = (zapas) => {
-  const divZapas = document.querySelector('#zapatillas');
-  divZapas.innerHTML = ''; // Vacía el contenedor de zapatillas
-
-  // Itera sobre cada zapatilla y crea elementos HTML para mostrarlas
-  for (const zapa of zapas) {
-    // Crea elementos para cada propiedad de la zapatilla
-    const divZapa = document.createElement('div');
-    const divImg = document.createElement('div');
-    const img = document.createElement('img');
-    const nombre = document.createElement('h3');
-    const precio = document.createElement('p');
-    const boton = document.createElement('button');
-    const divEstrellas = document.createElement('div');
-
-    // Crea estrellas de calificación para cada zapatilla
-    for (let i = 1; i <= 5; i++) {
-      const estrella = document.createElement('div');
-      estrella.className = 'estrella';
-      if (zapa.estrellas >= i) {
-        estrella.classList.add('rellena');
-      }
-      divEstrellas.appendChild(estrella);
-    }
-
-    // Añade clases y contenido a los elementos
-    divZapa.className = 'flex-container';
-    divImg.classList.add('imgContainer');
-    divEstrellas.classList.add('estrellas');
-    divEstrellas.classList.add('flex-container');
-    nombre.classList.add('f2');
-    boton.classList.add('f3');
-
-    // Agrega evento al botón para resaltar al hacer clic
-    boton.addEventListener('click', () => {
-      boton.style.backgroundColor = 'yellow';
-      boton.style.transition = '.5s ease';
-    });
-
-    // Asigna valores y contenido a los elementos
-    img.src = zapa.img;
-    nombre.textContent = zapa.nombre;
-    precio.textContent = `${zapa.precio} €`;
-    boton.textContent = zapa.boton;
-    divImg.style.background = `var(--tdf-special-color-${
-      Math.floor(Math.random() * 8) + 1
-    })`;
-
-    // Construye la estructura de la zapatilla y la agrega al contenedor principal
-    divZapa.appendChild(divImg);
-    divImg.appendChild(img);
-    divZapa.appendChild(nombre);
-    divZapa.appendChild(precio);
-    divZapa.appendChild(divEstrellas);
-    divZapa.appendChild(boton);
-    divZapas.appendChild(divZapa);
-  }
-};
-
 // Inicializa los filtros y muestra sugerencias al cargar la página
 window.onload = () => {
   ShowHide();
