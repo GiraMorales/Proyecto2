@@ -263,19 +263,22 @@ const createResetButton = () => {
   divFiltros.appendChild(resetButton);
 };
 
-const printZapas = (zapas) => {
+const printZapas = (zapas, suggest = false) => {
   const divZapas = document.querySelector('#zapatillas');
-  // divZapas.innerHTML = ''; // Vacía el contenedor de zapatillas
+  divZapas.innerHTML = ''; // Vacía el contenedor de zapatillas
 
   if (zapas <= 0) {
-    divZapas.innerHTML =
-      '<h4>No hemos encontrado lo que buscaba pero os sugerimos estas otras que podrian ser de su agrado:<h>';
+    // divZapas.innerHTML =
+    //   '<h4>No hemos encontrado lo que buscaba pero os sugerimos estas otras que podrian ser de su agrado:<h>';
 
     // Obtener sugerencias aleatorias
     const sugerencias = productosfiltrados();
-    printZapas(sugerencias);
+    printZapas(sugerencias, true);
     console.log(sugerencias);
   } else {
+    suggest &&
+      (divZapas.innerHTML =
+        '<h4>No hemos encontrado lo que buscaba pero os sugerimos estas otras que podrian ser de su agrado:<h>');
     for (const zapa of zapas) {
       // Crea elementos para cada propiedad de la zapatilla
       const divZapa = document.createElement('div');
