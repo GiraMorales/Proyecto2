@@ -41,7 +41,7 @@ a {
   --tdf-card: var(--tdf-color-4);
 
   /*BORDER RADIUS*/
-  --tdf-boder-radius: 10px;
+  --tdf-border-radius: 10px;
 
   /* FONTSIZE */
   --tdf-fontsize-xs: 5px;
@@ -81,8 +81,7 @@ header {
 }
 
 header .logo {
-  width: 10%;
-  height: 10%;
+  width: 9em;
 }
 
 header nav {
@@ -95,7 +94,7 @@ header nav {
 header nav a {
   display: flex;
   padding: var(--tdf-padding-m);
-  width: 15%;
+  width: 7em;
   align-items: center;
 }
 
@@ -106,6 +105,12 @@ header nav a {
   align-items: center;
   gap: var(--tdf-gap-m);
   flex-wrap: wrap;
+}
+
+.flex-container h4 {
+  font-size: larger;
+  color: rgb(188, 173, 45);
+  text-align: center;
 }
 
 .sectionfiltros {
@@ -124,10 +129,14 @@ select {
 }
 
 #zapatillas {
-  margin: var(--tdf-margin-m) 0px;
+  margin: var(--tdf-margin-m) 10%;
   gap: var(--tdf-gap-xl);
   padding: 0px var(--tdf-padding-m);
 }
+
+/* #zapatillas {
+  margin: 10%;
+} */
 
 #zapatillas > div {
   flex-direction: column;
@@ -185,6 +194,7 @@ select {
 button {
   font-size: large;
   border-radius: 30px;
+  margin-top: var(--tdf-margin-xs);
   padding: var(--tdf-padding-s);
   background: var(--tdf-color-4);
 }
@@ -229,9 +239,8 @@ h4 {
 }
 
 @media screen and (max-width: 440px) {
-  /* no escrito nada porque no me funciona tampoco */
   .encabezado {
-    margin: 0 var(--tdf-margin-s);
+    margin: 0 var(--tdf-margin-m);
     gap: var(--tdf-gap-m);
   }
 
@@ -245,6 +254,7 @@ h4 {
 
   header nav a {
     padding: var(--tdf-padding-xs);
+    width: 15%;
   }
 
   /* body */
@@ -279,19 +289,23 @@ h4 {
     align-items: center;
   }
   .flex-container {
-    gap: var(--tdf-gap-m);
+    gap: var(--tdf-gap-s);
     justify-content: space-around;
-    margin: -5%;
+    margin: 10px -5%;
+  }
+
+  .flex-container h4 {
+    font-size: small;
   }
 
   .imgContainer > img {
-    width: 85%;
+    width: 80%;
     height: 100%;
   }
 
   .estrella {
-    width: 10px;
-    height: 15px;
+    width: 9px;
+    height: 12px;
   }
 
   .f3 {
@@ -300,13 +314,21 @@ h4 {
 
   footer {
     flex-direction: column;
-    font-size: 10px;
-    height: 250px;
+    font-size: 50%;
+    height: 260px;
     gap: var(--tdf-gap-s);
-    align-items: center;
   }
 
-  h4 {
-    margin-bottom: var(--tdf-margin-s);
+  footer > section {
+    margin: 5px 10px;
+    width: 25%;
+  }
+
+  #comprar,
+  #atencion,
+  #legal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 }
